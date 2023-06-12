@@ -51,6 +51,8 @@ public class Menu extends JFrame{
                 }else {
                     CPU_GAME cpu = new CPU_GAME(tam,tam,'R');
                     new GUI_SOS(cpu);
+                    cpu.setModo(modo);
+                    setVisible(false);
                 }
             }
         });

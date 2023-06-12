@@ -2,6 +2,8 @@ package Sprint5_0;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -39,6 +41,15 @@ public class GUI_SOS extends JFrame{
     private void ActionListener()
     {
         rbtn_azulS.setSelected(false);
+
+        btn_JuegoNuevo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                tableroLogico.ResetGame();
+                tableroLogico.setEstadoActual(Tablero.EstadoDeJuego.PLAYING);
+                repaint();
+            }
+        });
     }
 
     private void BotonesJugadorRojo()
@@ -99,8 +110,6 @@ public class GUI_SOS extends JFrame{
                         int columnas = e.getX() / TAM_CELDA;
                         tableroLogico.RealizarMovimiento(filas,columnas);
 
-                        TableroConsola tab=new TableroConsola(tableroLogico);
-                        tab.MostrarConsola();
                     }
                     repaint();
                 }
@@ -191,9 +200,15 @@ public class GUI_SOS extends JFrame{
                 }
             }else {
                 if(tableroLogico.getEstadoActual()== Tablero.EstadoDeJuego.AZUL_GANA)
+                {
                     lbl_turno.setText("GANO AZUL");
+                    lbl_turno.setForeground(Color.BLUE);
+                }
                 else
+                {
                     lbl_turno.setText("GANO ROJO");
+                    lbl_turno.setForeground(Color.RED);
+                }
 
                 if(tableroLogico.getEstadoActual()== Tablero.EstadoDeJuego.EMPATE) lbl_turno.setText("EMPATE");
 
@@ -202,15 +217,5 @@ public class GUI_SOS extends JFrame{
     }
     public static void main(String[] args) {
 
-        /*
-        Tablero tablero = new Tablero(4,4);
-        tablero.setModo(Tablero.ModoDeJuego.GENERAL);
-        new GUI_SOS(tablero);
-         */
-
-        /*
-        CPU_GAME cpu = new CPU_GAME(3,3,'R');
-        new GUI_SOS(cpu);
-         */
     }
 }

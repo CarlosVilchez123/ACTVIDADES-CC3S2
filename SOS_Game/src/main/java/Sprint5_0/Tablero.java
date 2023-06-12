@@ -31,9 +31,11 @@ public class Tablero {
 
         EstadoActual= Tablero.EstadoDeJuego.PLAYING;
         turno='A';
-
+        puntosAzul=0;
+        puntosRojo=0;
     }
 
+    public void ResetGame(){ initTablero();}
     public void RealizarMovimiento(int filas, int columnas)
     {
         if(CeldaValida(filas,columnas))
@@ -72,119 +74,78 @@ public class Tablero {
 
     public boolean Gana(int filas, int columnas)
     {
-        if(modo== Tablero.ModoDeJuego.SIMPLE) {
+        FormacionDelSOS(filas,columnas);
+        if(modo==ModoDeJuego.SIMPLE) return (puntosAzul>puntosRojo || puntosRojo>puntosAzul);
+        if(modo==ModoDeJuego.GENERAL) return tableroLleno();
+        return false;
+    }
+    public void FormacionDelSOS(int filas, int columnas)
+    {
+
             if (turno == 'A') {
                 if (seleccion == 'S') {
 
                     if (filas - 1 >= 0 && filas - 1 < NumFilas && columnas + 1 >= 0 && columnas + 1 < NumColumnas && filas - 2 >= 0 && filas - 2 < NumFilas && columnas + 2 >= 0 && columnas + 2 < NumColumnas)
                         if (celdas[filas][columnas] == Tablero.ContenidoCeldas.AZUL_S && celdas[filas - 1][columnas + 1] == Tablero.ContenidoCeldas.AZUL_O && celdas[filas - 2][columnas + 2] == Tablero.ContenidoCeldas.AZUL_S)
-                            return true;
+                        {
+
+                            puntosAzul++;
+                        }
 
                     if (filas >= 0 && filas < NumFilas && columnas + 1 >= 0 && columnas + 1 < NumColumnas && filas >= 0 && filas < NumFilas && columnas + 2 >= 0 && columnas + 2 < NumColumnas)
                         if (celdas[filas][columnas] == Tablero.ContenidoCeldas.AZUL_S && celdas[filas][columnas + 1] == Tablero.ContenidoCeldas.AZUL_O && celdas[filas][columnas + 2] == Tablero.ContenidoCeldas.AZUL_S)
-                            return true;
+                        {
+
+                            puntosAzul++;
+                        }
 
                     if (filas + 1 >= 0 && filas + 1 < NumFilas && columnas + 1 >= 0 && columnas + 1 < NumColumnas && filas + 2 >= 0 && filas + 2 < NumFilas && columnas + 2 >= 0 && columnas + 2 < NumColumnas)
                         if (celdas[filas][columnas] == Tablero.ContenidoCeldas.AZUL_S && celdas[filas + 1][columnas + 1] == Tablero.ContenidoCeldas.AZUL_O && celdas[filas + 2][columnas + 2] == Tablero.ContenidoCeldas.AZUL_S)
-                            return true;
+                        {
+
+                            puntosAzul++;
+                        }
 
                     if (filas + 1 >= 0 && filas + 1 < NumFilas && columnas >= 0 && columnas < NumColumnas && filas + 2 >= 0 && filas + 2 < NumFilas && columnas >= 0 && columnas < NumColumnas)
                         if (celdas[filas][columnas] == Tablero.ContenidoCeldas.AZUL_S && celdas[filas + 1][columnas] == Tablero.ContenidoCeldas.AZUL_O && celdas[filas + 2][columnas] == Tablero.ContenidoCeldas.AZUL_S)
-                            return true;
+                        {
+
+                            puntosAzul++;
+                        }
 
                     if (filas + 1 >= 0 && filas + 1 < NumFilas && columnas - 1 >= 0 && columnas - 1 < NumColumnas && filas + 2 >= 0 && filas + 2 < NumFilas && columnas - 2 >= 0 && columnas - 2 < NumColumnas)
                         if (celdas[filas][columnas] == Tablero.ContenidoCeldas.AZUL_S && celdas[filas + 1][columnas - 1] == Tablero.ContenidoCeldas.AZUL_O && celdas[filas + 2][columnas - 2] == Tablero.ContenidoCeldas.AZUL_S)
-                            return true;
+                        {
+
+                            puntosAzul++;
+                        }
 
                     if (filas - 1 >= 0 && filas - 1 < NumFilas && columnas - 1 >= 0 && columnas - 1 < NumColumnas && filas - 2 >= 0 && filas - 2 < NumFilas && columnas - 2 >= 0 && columnas - 2 < NumColumnas)
                         if (celdas[filas][columnas] == Tablero.ContenidoCeldas.AZUL_S && celdas[filas - 1][columnas - 1] == Tablero.ContenidoCeldas.AZUL_O && celdas[filas - 2][columnas - 2] == Tablero.ContenidoCeldas.AZUL_S)
-                            return true;
+                        {
+
+                            puntosAzul++;
+                        }
 
                     if (filas >= 0 && filas < NumFilas && columnas - 1 >= 0 && columnas - 1 < NumColumnas && filas >= 0 && filas < NumFilas && columnas - 2 >= 0 && columnas - 2 < NumColumnas)
                         if (celdas[filas][columnas] == Tablero.ContenidoCeldas.AZUL_S && celdas[filas][columnas - 1] == Tablero.ContenidoCeldas.AZUL_O && celdas[filas][columnas - 2] == Tablero.ContenidoCeldas.AZUL_S)
-                            return true;
+                        {
+
+                            puntosAzul++;
+                        }
 
                     if ((filas - 1 >= 0 && filas - 1 < NumFilas && columnas >= 0 && columnas < NumColumnas) && (filas - 2 >= 0 && filas - 2 < NumFilas && columnas >= 0 && columnas < NumColumnas))
                         if (celdas[filas][columnas] == Tablero.ContenidoCeldas.AZUL_S && celdas[filas - 1][columnas] == Tablero.ContenidoCeldas.AZUL_O && celdas[filas - 2][columnas] == Tablero.ContenidoCeldas.AZUL_S)
-                            return true;
+                        {
+
+                            puntosAzul++;
+                        }
 
                 }
             }else {
                 if (seleccion=='S') {
                     if (filas - 1 >= 0 && filas - 1 < NumFilas && columnas + 1 >= 0 && columnas + 1 < NumColumnas && filas - 2 >= 0 && filas - 2 < NumFilas && columnas + 2 >= 0 && columnas + 2 < NumColumnas)
                         if (celdas[filas][columnas] == ContenidoCeldas.ROJO_S && celdas[filas - 1][columnas + 1] == ContenidoCeldas.ROJO_O && celdas[filas - 2][columnas + 2] == Tablero.ContenidoCeldas.ROJO_S)
-                            return true;
-
-                    if (filas >= 0 && filas < NumFilas && columnas + 1 >= 0 && columnas + 1 < NumColumnas && filas >= 0 && filas < NumFilas && columnas + 2 >= 0 && columnas + 2 < NumColumnas)
-                        if (celdas[filas][columnas] == Tablero.ContenidoCeldas.ROJO_S && celdas[filas][columnas + 1] == Tablero.ContenidoCeldas.ROJO_O && celdas[filas][columnas + 2] == Tablero.ContenidoCeldas.ROJO_S)
-                            return true;
-
-                    if (filas + 1 >= 0 && filas + 1 < NumFilas && columnas + 1 >= 0 && columnas + 1 < NumColumnas && filas + 2 >= 0 && filas + 2 < NumFilas && columnas + 2 >= 0 && columnas + 2 < NumColumnas)
-                        if (celdas[filas][columnas] == Tablero.ContenidoCeldas.ROJO_S && celdas[filas + 1][columnas + 1] == Tablero.ContenidoCeldas.ROJO_O && celdas[filas + 2][columnas + 2] == Tablero.ContenidoCeldas.ROJO_S)
-                            return true;
-
-                    if (filas + 1 >= 0 && filas + 1 < NumFilas && columnas >= 0 && columnas < NumColumnas && filas + 2 >= 0 && filas + 2 < NumFilas && columnas >= 0 && columnas < NumColumnas)
-                        if (celdas[filas][columnas] == Tablero.ContenidoCeldas.ROJO_S && celdas[filas + 1][columnas] == Tablero.ContenidoCeldas.ROJO_O && celdas[filas + 2][columnas] == Tablero.ContenidoCeldas.ROJO_S)
-                            return true;
-
-                    if (filas + 1 >= 0 && filas + 1 < NumFilas && columnas - 1 >= 0 && columnas - 1 < NumColumnas && filas + 2 >= 0 && filas + 2 < NumFilas && columnas - 2 >= 0 && columnas - 2 < NumColumnas)
-                        if (celdas[filas][columnas] == Tablero.ContenidoCeldas.ROJO_S && celdas[filas + 1][columnas - 1] == Tablero.ContenidoCeldas.ROJO_O && celdas[filas + 2][columnas - 2] == Tablero.ContenidoCeldas.ROJO_S)
-                            return true;
-
-                    if (filas - 1 >= 0 && filas - 1 < NumFilas && columnas - 1 >= 0 && columnas - 1 < NumColumnas && filas - 2 >= 0 && filas - 2 < NumFilas && columnas - 2 >= 0 && columnas - 2 < NumColumnas)
-                        if (celdas[filas][columnas] == Tablero.ContenidoCeldas.ROJO_S && celdas[filas - 1][columnas - 1] == Tablero.ContenidoCeldas.ROJO_O && celdas[filas - 2][columnas - 2] == Tablero.ContenidoCeldas.ROJO_S)
-                            return true;
-
-                    if (filas >= 0 && filas < NumFilas && columnas - 1 >= 0 && columnas - 1 < NumColumnas && filas >= 0 && filas < NumFilas && columnas - 2 >= 0 && columnas - 2 < NumColumnas)
-                        if (celdas[filas][columnas] == Tablero.ContenidoCeldas.ROJO_S && celdas[filas][columnas - 1] == Tablero.ContenidoCeldas.ROJO_O && celdas[filas][columnas - 2] == Tablero.ContenidoCeldas.ROJO_S)
-                            return true;
-
-                    if ((filas - 1 >= 0 && filas - 1 < NumFilas && columnas >= 0 && columnas < NumColumnas) && (filas - 2 >= 0 && filas - 2 < NumFilas && columnas >= 0 && columnas < NumColumnas))
-                        if (celdas[filas][columnas] == Tablero.ContenidoCeldas.ROJO_S && celdas[filas - 1][columnas] == Tablero.ContenidoCeldas.ROJO_O && celdas[filas - 2][columnas] == Tablero.ContenidoCeldas.ROJO_S)
-                            return true;
-                }
-            }
-        }else {
-            if (turno == 'A') {
-                if (seleccion == 'S') {
-
-                    if (filas - 1 >= 0 && filas - 1 < NumFilas && columnas + 1 >= 0 && columnas + 1 < NumColumnas && filas - 2 >= 0 && filas - 2 < NumFilas && columnas + 2 >= 0 && columnas + 2 < NumColumnas)
-                        if (celdas[filas][columnas] == Tablero.ContenidoCeldas.AZUL_S && celdas[filas - 1][columnas + 1] == Tablero.ContenidoCeldas.AZUL_O && celdas[filas - 2][columnas + 2] == Tablero.ContenidoCeldas.AZUL_S)
-                            puntosAzul++;
-
-                    if (filas >= 0 && filas < NumFilas && columnas + 1 >= 0 && columnas + 1 < NumColumnas && filas >= 0 && filas < NumFilas && columnas + 2 >= 0 && columnas + 2 < NumColumnas)
-                        if (celdas[filas][columnas] == Tablero.ContenidoCeldas.AZUL_S && celdas[filas][columnas + 1] == Tablero.ContenidoCeldas.AZUL_O && celdas[filas][columnas + 2] == Tablero.ContenidoCeldas.AZUL_S)
-                            puntosAzul++;
-
-                    if (filas + 1 >= 0 && filas + 1 < NumFilas && columnas + 1 >= 0 && columnas + 1 < NumColumnas && filas + 2 >= 0 && filas + 2 < NumFilas && columnas + 2 >= 0 && columnas + 2 < NumColumnas)
-                        if (celdas[filas][columnas] == Tablero.ContenidoCeldas.AZUL_S && celdas[filas + 1][columnas + 1] == Tablero.ContenidoCeldas.AZUL_O && celdas[filas + 2][columnas + 2] == Tablero.ContenidoCeldas.AZUL_S)
-                            puntosAzul++;
-
-                    if (filas + 1 >= 0 && filas + 1 < NumFilas && columnas >= 0 && columnas < NumColumnas && filas + 2 >= 0 && filas + 2 < NumFilas && columnas >= 0 && columnas < NumColumnas)
-                        if (celdas[filas][columnas] == Tablero.ContenidoCeldas.AZUL_S && celdas[filas + 1][columnas] == Tablero.ContenidoCeldas.AZUL_O && celdas[filas + 2][columnas] == Tablero.ContenidoCeldas.AZUL_S)
-                            puntosAzul++;
-
-                    if (filas + 1 >= 0 && filas + 1 < NumFilas && columnas - 1 >= 0 && columnas - 1 < NumColumnas && filas + 2 >= 0 && filas + 2 < NumFilas && columnas - 2 >= 0 && columnas - 2 < NumColumnas)
-                        if (celdas[filas][columnas] == Tablero.ContenidoCeldas.AZUL_S && celdas[filas + 1][columnas - 1] == Tablero.ContenidoCeldas.AZUL_O && celdas[filas + 2][columnas - 2] == Tablero.ContenidoCeldas.AZUL_S)
-                            puntosAzul++;
-
-                    if (filas - 1 >= 0 && filas - 1 < NumFilas && columnas - 1 >= 0 && columnas - 1 < NumColumnas && filas - 2 >= 0 && filas - 2 < NumFilas && columnas - 2 >= 0 && columnas - 2 < NumColumnas)
-                        if (celdas[filas][columnas] == Tablero.ContenidoCeldas.AZUL_S && celdas[filas - 1][columnas - 1] == Tablero.ContenidoCeldas.AZUL_O && celdas[filas - 2][columnas - 2] == Tablero.ContenidoCeldas.AZUL_S)
-                            puntosAzul++;
-
-                    if (filas >= 0 && filas < NumFilas && columnas - 1 >= 0 && columnas - 1 < NumColumnas && filas >= 0 && filas < NumFilas && columnas - 2 >= 0 && columnas - 2 < NumColumnas)
-                        if (celdas[filas][columnas] == Tablero.ContenidoCeldas.AZUL_S && celdas[filas][columnas - 1] == Tablero.ContenidoCeldas.AZUL_O && celdas[filas][columnas - 2] == Tablero.ContenidoCeldas.AZUL_S)
-                            puntosAzul++;
-
-                    if ((filas - 1 >= 0 && filas - 1 < NumFilas && columnas >= 0 && columnas < NumColumnas) && (filas - 2 >= 0 && filas - 2 < NumFilas && columnas >= 0 && columnas < NumColumnas))
-                        if (celdas[filas][columnas] == Tablero.ContenidoCeldas.AZUL_S && celdas[filas - 1][columnas] == Tablero.ContenidoCeldas.AZUL_O && celdas[filas - 2][columnas] == Tablero.ContenidoCeldas.AZUL_S)
-                            puntosAzul++;
-
-                }
-            }else{
-                if (seleccion=='S') {
-                    if (filas - 1 >= 0 && filas - 1 < NumFilas && columnas + 1 >= 0 && columnas + 1 < NumColumnas && filas - 2 >= 0 && filas - 2 < NumFilas && columnas + 2 >= 0 && columnas + 2 < NumColumnas)
-                        if (celdas[filas][columnas] == ContenidoCeldas.ROJO_S && celdas[filas - 1][columnas + 1] == ContenidoCeldas.ROJO_O && celdas[filas - 2][columnas + 2] == Tablero.ContenidoCeldas.ROJO_S)
                             puntosRojo++;
 
                     if (filas >= 0 && filas < NumFilas && columnas + 1 >= 0 && columnas + 1 < NumColumnas && filas >= 0 && filas < NumFilas && columnas + 2 >= 0 && columnas + 2 < NumColumnas)
@@ -216,9 +177,6 @@ public class Tablero {
                             puntosRojo++;
                 }
             }
-            if(tableroLleno()) return true;
-        }
-        return false;
     }
 
     public boolean tableroLleno()
@@ -256,16 +214,12 @@ public class Tablero {
 
     public char getTurno(){return turno;}
     public void setSeleccion(char seleccion){this.seleccion = seleccion;}
-    public char getSeleccion(){return seleccion;}
-    public void setNumFilas(int NumFilas){this.NumFilas =NumFilas;}
     public int getNumFilas(){return NumFilas;}
-    public void setNumColumnas(int NumColumnas){this.NumColumnas =NumColumnas;}
     public int getNumColumnas(){return NumColumnas;}
     public void setModo(Tablero.ModoDeJuego modo){this.modo=modo;}
-    public Tablero.ModoDeJuego getModo(){return modo;}
+    public ModoDeJuego getModo(){return modo;}
 
-    public Tablero.EstadoDeJuego getEstadoActual(){return EstadoActual;}
+    public EstadoDeJuego getEstadoActual(){return EstadoActual;}
+    public void setEstadoActual( EstadoDeJuego estadoActual){ this.EstadoActual=estadoActual;}
 
-    public int getPuntosAzul(){return puntosAzul;}
-    public int getPuntosRojo(){return puntosRojo;}
 }

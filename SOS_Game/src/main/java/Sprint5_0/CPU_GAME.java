@@ -17,7 +17,7 @@ public class CPU_GAME extends Tablero{
 
     private void hacerPrimerMovimiento() {
         Random rand = new Random();
-        int position = rand.nextInt(9);
+        int position = rand.nextInt(getNumFilas()*getNumColumnas());
         super.RealizarMovimiento(position/ getNumFilas(),position%getNumColumnas());
     }
 
@@ -29,6 +29,10 @@ public class CPU_GAME extends Tablero{
             super.RealizarMovimiento(filas,columnas);
             if(turno == autoPlayer && EstadoActual== Tablero.EstadoDeJuego.PLAYING)
             {
+                Random rand = new Random();
+
+                if(rand.nextInt(2)==0) super.seleccion='S';
+                else super.seleccion='O';
                 autoMoverse();
             }
         }

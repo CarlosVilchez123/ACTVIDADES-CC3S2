@@ -6,8 +6,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class StringUtilsTest {
 
-    @Test void strIsNullOrEmpty() {
-        // Completa
+    public StringUtils EMPY_STRING_ARRAY = new StringUtils();
+    @Test
+    void strIsNullOrEmpty() {
+        String str="";
+        String open= "a";
+        String close = "a";
+        assertThat(EMPY_STRING_ARRAY.substringsBetween(str,open,close)).isEqualTo(null);
     }
 
     @Test

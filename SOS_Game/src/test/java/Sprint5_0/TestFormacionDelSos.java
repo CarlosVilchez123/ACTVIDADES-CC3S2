@@ -194,4 +194,27 @@ public class TestFormacionDelSos {
             e.printStackTrace();
         }
     }
+
+    @Test
+    public void testCPUSimpleAzul()
+    {
+        CPU_GAME cpu = new CPU_GAME(3,3,'R');
+        cpu.setModo(Tablero.ModoDeJuego.SIMPLE);
+        cpu.setSeleccion('S');
+        cpu.RealizarMovimiento(0,0);
+
+        cpu.setSeleccion('O');
+        cpu.RealizarMovimiento(0,1);
+
+        cpu.setSeleccion('S');
+        cpu.RealizarMovimiento(0,2);
+
+
+        new GUI_SOS(cpu);
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }

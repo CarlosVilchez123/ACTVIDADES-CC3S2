@@ -22,6 +22,7 @@ public class NumberUtils {
      * @param right una lista que contiene el número right. Null devuelve null, empty significa 0.
      * @return la suma de left y right, como una lista.
      */
+    /*
     public static List<Integer> add(List<Integer> left, List<Integer> right) {
         // Si alguno es null, devuelve null
 
@@ -39,4 +40,5 @@ public class NumberUtils {
         // elimina los ceros iniciales del resultado
 
     }
+    */
 }
