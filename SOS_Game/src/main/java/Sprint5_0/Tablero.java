@@ -1,5 +1,8 @@
 package Sprint5_0;
 
+import java.io.File;
+import java.io.PrintWriter;
+
 public class Tablero {
     public enum ContenidoCeldas {VACIO, AZUL_O,AZUL_S,ROJO_O,ROJO_S};
     public enum EstadoDeJuego {PLAYING, DRAW, AZUL_GANA, ROJO_GANA, EMPATE}
@@ -48,31 +51,59 @@ public class Tablero {
             }
 
             ActualizarEstadoDeJuego(filas, columnas);
+            CrearRecord(filas,columnas);
             turno = (turno=='A')? 'R':'A';
+        }
+    }
+
+    private void CrearRecord(int filas, int columnas)
+    {
+        File record = new File("record.txt");
+
+        try{
+            PrintWriter salida = new PrintWriter(record);
+            for(int i=0; i<NumFilas; i++)
+            {
+                salida.println("--------------------------------------");
+                for(int j=0;j<NumColumnas;j++)
+                {
+                    salida.print("| "+celdas[i][j].toString());
+                    salida.print("| ");
+                }
+                salida.println();
+            }
+            salida.print("--------------------------------------");
+            salida.close();
+        }catch (Exception e)
+        {
+            e.printStackTrace(System.out);
         }
     }
 
     public void ActualizarEstadoDeJuego(int filas, int columnas)
     {
-        if(Gana(filas, columnas))
+        if(FinDelJuego(filas, columnas))
         {
-            if(modo== Tablero.ModoDeJuego.SIMPLE) EstadoActual = (turno=='A')? Tablero.EstadoDeJuego.AZUL_GANA: Tablero.EstadoDeJuego.ROJO_GANA;
-            else{
-                if (puntosAzul > puntosRojo) {
-                    EstadoActual = Tablero.EstadoDeJuego.AZUL_GANA;
-                } else {
-                    if (puntosAzul == puntosRojo)
-                        EstadoActual = Tablero.EstadoDeJuego.EMPATE;
-                    else EstadoActual = Tablero.EstadoDeJuego.ROJO_GANA;
-                }
-            }
+            if(modo== Tablero.ModoDeJuego.SIMPLE) Gana();
+            else Gana();
+
         }else if(isDraw())
         {
             EstadoActual = Tablero.EstadoDeJuego.DRAW;
         }
     }
 
-    public boolean Gana(int filas, int columnas)
+    public void Gana()
+    {
+        if (puntosAzul > puntosRojo) {
+            EstadoActual = Tablero.EstadoDeJuego.AZUL_GANA;
+        } else {
+            if (puntosAzul == puntosRojo)
+                EstadoActual = Tablero.EstadoDeJuego.EMPATE;
+            else EstadoActual = Tablero.EstadoDeJuego.ROJO_GANA;
+        }
+    }
+    public boolean FinDelJuego(int filas, int columnas)
     {
         FormacionDelSOS(filas,columnas);
         if(modo==ModoDeJuego.SIMPLE) return (puntosAzul>puntosRojo || puntosRojo>puntosAzul);

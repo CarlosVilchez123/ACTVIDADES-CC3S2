@@ -26,6 +26,7 @@ public class GUI_SOS extends JFrame{
     private JLabel lbl_JugadorRojo;
     private JLabel lbl_scoreRojo;
     private JLabel lbl_scoreAzul;
+    private JButton btn_NewGame;
 
     public GUI_SOS(Tablero tableroLogico)
     {
@@ -40,7 +41,7 @@ public class GUI_SOS extends JFrame{
 
     private void ActionListener()
     {
-        rbtn_azulS.setSelected(false);
+        //rbtn_azulS.setSelected(false);
 
         btn_JuegoNuevo.addActionListener(new ActionListener() {
             @Override
@@ -48,6 +49,15 @@ public class GUI_SOS extends JFrame{
                 tableroLogico.ResetGame();
                 tableroLogico.setEstadoActual(Tablero.EstadoDeJuego.PLAYING);
                 repaint();
+            }
+        });
+        btn_NewGame.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+
+                Menu menu = new Menu();
+                menu.setVisible(true);
             }
         });
     }
@@ -109,7 +119,6 @@ public class GUI_SOS extends JFrame{
                         int filas = e.getY() / TAM_CELDA;
                         int columnas = e.getX() / TAM_CELDA;
                         tableroLogico.RealizarMovimiento(filas,columnas);
-
                     }
                     repaint();
                 }
@@ -210,7 +219,11 @@ public class GUI_SOS extends JFrame{
                     lbl_turno.setForeground(Color.RED);
                 }
 
-                if(tableroLogico.getEstadoActual()== Tablero.EstadoDeJuego.EMPATE) lbl_turno.setText("EMPATE");
+                if(tableroLogico.getEstadoActual()== Tablero.EstadoDeJuego.EMPATE)
+                {
+                    lbl_turno.setForeground(Color.GREEN);
+                    lbl_turno.setText("EMPATE");
+                }
 
             }
         }
