@@ -123,6 +123,7 @@ public class GUI_SOS extends JFrame{
                     repaint();
                 }
             });
+
         }
         @Override
         protected void paintComponent(Graphics g) {

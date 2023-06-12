@@ -198,7 +198,7 @@ public class TestFormacionDelSos {
     @Test
     public void testCPUSimpleAzul()
     {
-        CPU_GAME cpu = new CPU_GAME(3,3,'R');
+        Semi_IA cpu = new Semi_IA(3,3,'R');
         cpu.setModo(Tablero.ModoDeJuego.SIMPLE);
         cpu.setSeleccion('S');
         cpu.RealizarMovimiento(0,0);

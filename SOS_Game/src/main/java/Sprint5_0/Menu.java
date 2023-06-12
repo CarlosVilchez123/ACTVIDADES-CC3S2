@@ -49,7 +49,7 @@ public class Menu extends JFrame{
                     g.setVisible(true);
 
                 }else {
-                    CPU_GAME cpu = new CPU_GAME(tam,tam,'R');
+                    Semi_IA cpu = new Semi_IA(tam,tam,'R');
                     new GUI_SOS(cpu);
                     cpu.setModo(modo);
                     setVisible(false);

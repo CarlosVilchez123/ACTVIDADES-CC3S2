@@ -2,10 +2,10 @@ package Sprint5_0;
 
 import java.util.Random;
 
-public class CPU_GAME extends Tablero{
+public class Semi_IA extends Tablero{
     private char autoPlayer;
 
-    public CPU_GAME(int filas, int columnas,char Player)
+    public Semi_IA(int filas, int columnas, char Player)
     {
         super(filas,columnas);
         this.autoPlayer=Player;
