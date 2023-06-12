@@ -51,12 +51,12 @@ public class Tablero {
             }
 
             ActualizarEstadoDeJuego(filas, columnas);
-            CrearRecord(filas,columnas);
+            CrearRecord();
             turno = (turno=='A')? 'R':'A';
         }
     }
 
-    private void CrearRecord(int filas, int columnas)
+    private void CrearRecord()
     {
         File record = new File("record.txt");
 
@@ -119,7 +119,6 @@ public class Tablero {
                     if (filas - 1 >= 0 && filas - 1 < NumFilas && columnas + 1 >= 0 && columnas + 1 < NumColumnas && filas - 2 >= 0 && filas - 2 < NumFilas && columnas + 2 >= 0 && columnas + 2 < NumColumnas)
                         if (celdas[filas][columnas] == Tablero.ContenidoCeldas.AZUL_S && celdas[filas - 1][columnas + 1] == Tablero.ContenidoCeldas.AZUL_O && celdas[filas - 2][columnas + 2] == Tablero.ContenidoCeldas.AZUL_S)
                         {
-
                             puntosAzul++;
                         }
 

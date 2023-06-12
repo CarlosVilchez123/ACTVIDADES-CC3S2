@@ -27,6 +27,7 @@ public class GUI_SOS extends JFrame{
     private JLabel lbl_scoreRojo;
     private JLabel lbl_scoreAzul;
     private JButton btn_NewGame;
+    private JButton btn_mostrarRecord;
 
     public GUI_SOS(Tablero tableroLogico)
     {
@@ -41,7 +42,6 @@ public class GUI_SOS extends JFrame{
 
     private void ActionListener()
     {
-        //rbtn_azulS.setSelected(false);
 
         btn_JuegoNuevo.addActionListener(new ActionListener() {
             @Override
@@ -58,6 +58,13 @@ public class GUI_SOS extends JFrame{
 
                 Menu menu = new Menu();
                 menu.setVisible(true);
+            }
+        });
+
+        btn_mostrarRecord.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new Record();
             }
         });
     }
@@ -142,7 +149,7 @@ public class GUI_SOS extends JFrame{
                 if (tableroLogico.getModo()== Tablero.ModoDeJuego.GENERAL)
                 {
                     lbl_scoreRojo.setText("SCORE JUGADOR ROJO: "+Integer.toString(tableroLogico.puntosRojo));
-                    lbl_scoreAzul.setText("SCORE JUGADOR ROJO: "+Integer.toString(tableroLogico.puntosAzul));
+                    lbl_scoreAzul.setText("SCORE JUGADOR AZUL: "+Integer.toString(tableroLogico.puntosAzul));
                 }else {
                     lbl_scoreAzul.setVisible(false);
                     lbl_scoreRojo.setVisible(false);
