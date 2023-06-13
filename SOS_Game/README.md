@@ -222,7 +222,7 @@ Dentro de la clase Tablero se creo un metodo llamado CrearRecord() el cual crea 
 del tablero creado al momento de jugar.
 
 <pre>
-```java
+´´´java
 private void CrearRecord()
     {
         File record = new File("record.txt");
@@ -246,15 +246,13 @@ private void CrearRecord()
             e.printStackTrace(System.out);
         }
     }
-
-```
+´´´
 </pre>
 
 Luego, para poder visualizar el record como se indica en la GUI de referencia del documento, se implemento un boton en la clase GUI_SOS el cual 
 va a mostrar un JFrame con el contenido del archivo de texto creado. Para ello se creo una nueva clase Record.
 
 <pre>
-```java
 import javax.swing.*;
 import java.awt.*;
 import java.io.BufferedReader;
@@ -308,6 +306,5 @@ public class Record extends JFrame {
         pack();
     }
 }
-```
 </pre>
 
