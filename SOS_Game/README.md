@@ -19,7 +19,7 @@ Por ello se separó en dos metodos a parte, el metodo Gana() se sigue manteniend
 FinDelJuego() determina (dependiendo el modo de juego elegido) si se ha terminado una partida; y por último, el metodo FormacionDelSOS() contabiliza
 los SOS formados por los jugadores.
 <pre>
-´´´java
+```java
 public void Gana()
 {
         if (puntosAzul > puntosRojo) {
@@ -138,7 +138,7 @@ public void FormacionDelSOS(int filas, int columnas)
             }
 }
 
-´´´
+```
 </pre>
 
 Con respecto al metodo al metodo FormacionDelSOS() se debe refactorizar si o si, debido al evidente smell code que se observa.
@@ -153,7 +153,7 @@ En el sprint 4 no se implemento una aleatoriedad para la colocacion de las letra
 jugador humano seleccionaba. Ahora ya se imeplemento dicha aleatoriedad.
 
 <pre>
-´´´java
+```java
  @Override
     public void RealizarMovimiento(int filas, int columnas)
     {
@@ -175,17 +175,15 @@ jugador humano seleccionaba. Ahora ya se imeplemento dicha aleatoriedad.
         }
     }
 
-´´´
-<\pre>
+```
+</pre>
 
 # Implementacion de la clase Record y la creacion de un archivo de texto
 
 Dentro de la clase Tablero se creo un metodo llamado CrearRecord() el cual crea un archivo de texto con las posiciones logicas del tablero lógico
 del tablero creado al momento de jugar.
 
-<pre>
-´´´java
-  GNU nano 7.1                                                              README.md                                                               Modified
+
 
 # Aleatoriedad de las letras "S" u "O" de la clase Semi_IA
 
@@ -193,7 +191,7 @@ En el sprint 4 no se implemento una aleatoriedad para la colocacion de las letra
 jugador humano seleccionaba. Ahora ya se imeplemento dicha aleatoriedad.
 
 <pre>
-´´´java
+```java
  @Override
     public void RealizarMovimiento(int filas, int columnas)
     {
@@ -215,8 +213,8 @@ jugador humano seleccionaba. Ahora ya se imeplemento dicha aleatoriedad.
         }
     }
 
-´´´
-<\pre>
+```
+</pre>
 
 # Implementacion de la clase Record y la creacion de un archivo de texto
 
@@ -224,7 +222,7 @@ Dentro de la clase Tablero se creo un metodo llamado CrearRecord() el cual crea 
 del tablero creado al momento de jugar.
 
 <pre>
-´´´java
+```java
 private void CrearRecord()
     {
         File record = new File("record.txt");
@@ -249,14 +247,14 @@ private void CrearRecord()
         }
     }
 
-´´´
-<\pre>
+```
+</pre>
 
 Luego, para poder visualizar el record como se indica en la GUI de referencia del documento, se implemento un boton en la clase GUI_SOS el cual 
 va a mostrar un JFrame con el contenido del archivo de texto creado. Para ello se creo una nueva clase Record.
 
 <pre>
-´´´java
+```java
 import javax.swing.*;
 import java.awt.*;
 import java.io.BufferedReader;
@@ -310,6 +308,6 @@ public class Record extends JFrame {
         pack();
     }
 }
-´´´
-<\pre>
+```
+</pre>
 
