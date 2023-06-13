@@ -221,7 +221,7 @@ jugador humano seleccionaba. Ahora ya se imeplemento dicha aleatoriedad.
 Dentro de la clase Tablero se creo un metodo llamado CrearRecord() el cual crea un archivo de texto con las posiciones logicas del tablero lógico
 del tablero creado al momento de jugar.
 
-```ruby
+```java
 private void CrearRecord()
 {
         File record = new File("record.txt");
@@ -254,6 +254,7 @@ va a mostrar un JFrame con el contenido del archivo de texto creado. Para ello s
 
 
 <pre>
+```java
 import javax.swing.*;
 import java.awt.*;
 import java.io.BufferedReader;
@@ -307,5 +308,6 @@ public class Record extends JFrame {
         pack();
     }
 }
+```
 </pre>
 
