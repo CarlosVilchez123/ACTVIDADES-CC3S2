@@ -221,7 +221,7 @@ jugador humano seleccionaba. Ahora ya se imeplemento dicha aleatoriedad.
 Dentro de la clase Tablero se creo un metodo llamado CrearRecord() el cual crea un archivo de texto con las posiciones logicas del tablero lógico
 del tablero creado al momento de jugar.
 
-<pre>
+´´´ruby
 private void CrearRecord()
     {
         File record = new File("record.txt");
@@ -245,7 +245,7 @@ private void CrearRecord()
             e.printStackTrace(System.out);
         }
     }
-</pre>
+´´´
 
 
 Luego, para poder visualizar el record como se indica en la GUI de referencia del documento, se implemento un boton en la clase GUI_SOS el cual 
