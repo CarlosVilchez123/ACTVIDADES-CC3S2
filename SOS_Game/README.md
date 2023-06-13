@@ -223,7 +223,7 @@ del tablero creado al momento de jugar.
 
 ´´´ruby
 private void CrearRecord()
-    {
+{
         File record = new File("record.txt");
 
         try{
