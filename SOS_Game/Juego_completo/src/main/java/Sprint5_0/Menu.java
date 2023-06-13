@@ -69,4 +69,8 @@ public class Menu extends JFrame{
         modo.add(rbtn_JuegoGeneral);
         modo.add(rbtn_juegoSimple);
     }
+
+    public static void main(String[] args) {
+        new Menu();
+    }
 }

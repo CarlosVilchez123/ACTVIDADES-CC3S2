@@ -1,7 +1,9 @@
 --------------------------------------
-| AZUL_S| | VACIO| | VACIO| 
+| AZUL_S| | VACIO| | VACIO| | VACIO| 
 --------------------------------------
-| VACIO| | AZUL_O| | VACIO| 
+| VACIO| | AZUL_O| | VACIO| | VACIO| 
 --------------------------------------
-| ROJO_O| | ROJO_S| | AZUL_S| 
+| VACIO| | VACIO| | VACIO| | VACIO| 
+--------------------------------------
+| VACIO| | VACIO| | ROJO_O| | ROJO_O| 
 --------------------------------------
