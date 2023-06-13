@@ -18,7 +18,7 @@ Esto incumple con el principio de responsabilidad única, entonces debe ser refa
 Por ello se separó en dos metodos a parte, el metodo Gana() se sigue manteniendo, pero este solo me determina si hay ganador o si hay un empate, el metodo
 FinDelJuego() determina (dependiendo el modo de juego elegido) si se ha terminado una partida; y por último, el metodo FormacionDelSOS() contabiliza
 los SOS formados por los jugadores.
-<pre>
+
 ```java
 public void Gana()
 {
@@ -139,7 +139,6 @@ public void FormacionDelSOS(int filas, int columnas)
 }
 
 ```
-</pre>
 
 Con respecto al metodo al metodo FormacionDelSOS() se debe refactorizar si o si, debido al evidente smell code que se observa.
 
@@ -152,7 +151,7 @@ En el sprint 4 se menciono que se cambiara la letra "C" que se uso para ese spri
 En el sprint 4 no se implemento una aleatoriedad para la colocacion de las letras "S" u "O", puesto que la maquina colocaba la misma letra que el
 jugador humano seleccionaba. Ahora ya se imeplemento dicha aleatoriedad.
 
-<pre>
+
 ```java
  @Override
     public void RealizarMovimiento(int filas, int columnas)
@@ -176,7 +175,6 @@ jugador humano seleccionaba. Ahora ya se imeplemento dicha aleatoriedad.
     }
 
 ```
-</pre>
 
 # Implementacion de la clase Record y la creacion de un archivo de texto
 
@@ -190,7 +188,6 @@ del tablero creado al momento de jugar.
 En el sprint 4 no se implemento una aleatoriedad para la colocacion de las letras "S" u "O", puesto que la maquina colocaba la misma letra que el
 jugador humano seleccionaba. Ahora ya se imeplemento dicha aleatoriedad.
 
-<pre>
 ```java
  @Override
     public void RealizarMovimiento(int filas, int columnas)
@@ -214,7 +211,6 @@ jugador humano seleccionaba. Ahora ya se imeplemento dicha aleatoriedad.
     }
 
 ```
-</pre>
 
 # Implementacion de la clase Record y la creacion de un archivo de texto
 
@@ -253,7 +249,6 @@ Luego, para poder visualizar el record como se indica en la GUI de referencia de
 va a mostrar un JFrame con el contenido del archivo de texto creado. Para ello se creo una nueva clase Record.
 
 
-<pre>
 ```java
 import javax.swing.*;
 import java.awt.*;
@@ -309,5 +304,4 @@ public class Record extends JFrame {
     }
 }
 ```
-</pre>
 
