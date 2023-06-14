@@ -181,42 +181,6 @@ jugador humano seleccionaba. Ahora ya se imeplemento dicha aleatoriedad.
 Dentro de la clase Tablero se creo un metodo llamado CrearRecord() el cual crea un archivo de texto con las posiciones logicas del tablero lógico
 del tablero creado al momento de jugar.
 
-
-
-# Aleatoriedad de las letras "S" u "O" de la clase Semi_IA
-
-En el sprint 4 no se implemento una aleatoriedad para la colocacion de las letras "S" u "O", puesto que la maquina colocaba la misma letra que el
-jugador humano seleccionaba. Ahora ya se imeplemento dicha aleatoriedad.
-
-```java
- @Override
-    public void RealizarMovimiento(int filas, int columnas)
-    {
-        if(super.CeldaValida(filas,columnas))
-        {
-            super.RealizarMovimiento(filas,columnas);
-            if(turno == autoPlayer && EstadoActual== Tablero.EstadoDeJuego.PLAYING)
-            {
-                Random rand = new Random();
-
-                /*
-                En estas dos lineas de codigo se muestra que la letra S u O pueden
-                ser seleccionadas de forma aleatoria
-                */
-                if(rand.nextInt(2)==0) super.seleccion='S';
-                else super.seleccion='O';
-                autoMoverse();
-            }
-        }
-    }
-
-```
-
-# Implementacion de la clase Record y la creacion de un archivo de texto
-
-Dentro de la clase Tablero se creo un metodo llamado CrearRecord() el cual crea un archivo de texto con las posiciones logicas del tablero lógico
-del tablero creado al momento de jugar.
-
 ```java
 private void CrearRecord()
 {
