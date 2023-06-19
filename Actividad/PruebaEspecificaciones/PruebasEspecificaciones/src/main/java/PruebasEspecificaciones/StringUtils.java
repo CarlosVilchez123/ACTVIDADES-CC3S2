@@ -11,8 +11,6 @@ public class StringUtils {
         return cs == null || cs.length() == 0;
     }
 
-    //EN ESTE CASO SE ESTA USANDO LA SINTAXIS DE JAVADOC PARA EXPLICAR LOS REQUISTOS DE LOS METODOS
-
     /**
      * Busca un String para subcadenas delimitadas por una etiqueta start y end,
      * y devuelve todas las subcadenas coincidentes en un arreglo.
@@ -23,36 +21,37 @@ public class StringUtils {
      * @return un arreglo String de subcadenas o {@code null} si no empareja
      */
     public static String[] substringsBetween(final String str, final String open, final String close) {
-        /*
-        Estamos verificando que primero se cumplan los requisotos de los parametros
-         */
-        if(str==null || isEmpty(open)||isEmpty(close)) return null;
+        if (str == null || isEmpty(open) || isEmpty(close)) {
+            return null;
+        }
 
-        final int strlen = str.length();
-        if(strlen==0) return EMPTY_STRING_ARRAY;
+        final int strLen = str.length();
+        if (strLen == 0) {
+            return EMPTY_STRING_ARRAY;
+        }
         final int closeLen = close.length();
         final int openLen = open.length();
 
         final List<String> list = new ArrayList<>();
+        int pos = 0;
+        while (pos < strLen - closeLen) {
+            int start = str.indexOf(open, pos);
 
-        int pos=0;
-        while(pos<strlen - closeLen)
-        {
-            int start = str.indexOf(open,pos);
+            if (start < 0) {
+                break;
+            }
+            start += openLen;
+            final int end = str.indexOf(close, start);
+            if (end < 0) {
+                break;
+            }
 
-            if(start < 0) break;
-             start +=openLen;
-
-             final int end = str.indexOf(close, start);
-
-             if(end<0) break;
-
-             list.add(str.substring(start,end));
-             pos=end +closeLen;
+            list.add(str.substring(start, end));
+            pos = end + closeLen;
         }
-
-        if(list.isEmpty()) return null;
-
+        if (list.isEmpty()) {
+            return null;
+        }
         return list.toArray(EMPTY_STRING_ARRAY);
     }
 }

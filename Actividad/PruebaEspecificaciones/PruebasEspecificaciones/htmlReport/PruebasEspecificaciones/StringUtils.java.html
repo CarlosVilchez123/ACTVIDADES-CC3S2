@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>StringUtils.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">StringUtilsTest Coverage Results</a> &gt; <a href="index.source.html" class="el_package">PruebasEspecificaciones</a> &gt; <span class="el_source">StringUtils.java</span></div><h1>StringUtils.java</h1><pre class="source lang-java linenums">package PruebasEspecificaciones;
+
+import java.util.ArrayList;
+import java.util.List;
+
+<span class="nc" id="L6">public class StringUtils {</span>
+
+<span class="fc" id="L8">    private static final String[] EMPTY_STRING_ARRAY = new String[0];</span>
+
+    private static boolean isEmpty(final CharSequence cs) {
+<span class="fc bfc" id="L11" title="All 4 branches covered.">        return cs == null || cs.length() == 0;</span>
+    }
+
+    /**
+     * Busca un String para subcadenas delimitadas por una etiqueta start y end,
+     * y devuelve todas las subcadenas coincidentes en un arreglo.
+     *
+     * @param str   el String que contiene las subcadenas, null devuelve null, empty devuelve empty
+     * @param open  el String identifica el inicio de la subcadena, empty retorna null
+     * @param close the String identifica el fin de la subcadena, empty retorna null
+     * @return un arreglo String de subcadenas o {@code null} si no empareja
+     */
+    public static String[] substringsBetween(final String str, final String open, final String close) {
+<span class="fc bfc" id="L24" title="All 6 branches covered.">        if (str == null || isEmpty(open) || isEmpty(close)) {</span>
+<span class="fc" id="L25">            return null;</span>
+        }
+
+<span class="fc" id="L28">        final int strLen = str.length();</span>
+<span class="fc bfc" id="L29" title="All 2 branches covered.">        if (strLen == 0) {</span>
+<span class="fc" id="L30">            return EMPTY_STRING_ARRAY;</span>
+        }
+<span class="fc" id="L32">        final int closeLen = close.length();</span>
+<span class="fc" id="L33">        final int openLen = open.length();</span>
+
+<span class="fc" id="L35">        final List&lt;String&gt; list = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L36">        int pos = 0;</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">        while (pos &lt; strLen - closeLen) {</span>
+<span class="fc" id="L38">            int start = str.indexOf(open, pos);</span>
+
+<span class="fc bfc" id="L40" title="All 2 branches covered.">            if (start &lt; 0) {</span>
+<span class="fc" id="L41">                break;</span>
+            }
+<span class="fc" id="L43">            start += openLen;</span>
+<span class="fc" id="L44">            final int end = str.indexOf(close, start);</span>
+<span class="fc bfc" id="L45" title="All 2 branches covered.">            if (end &lt; 0) {</span>
+<span class="fc" id="L46">                break;</span>
+            }
+
+<span class="fc" id="L49">            list.add(str.substring(start, end));</span>
+<span class="fc" id="L50">            pos = end + closeLen;</span>
+<span class="fc" id="L51">        }</span>
+<span class="fc bfc" id="L52" title="All 2 branches covered.">        if (list.isEmpty()) {</span>
+<span class="fc" id="L53">            return null;</span>
+        }
+<span class="fc" id="L55">        return list.toArray(EMPTY_STRING_ARRAY);</span>
+    }
+}
+
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

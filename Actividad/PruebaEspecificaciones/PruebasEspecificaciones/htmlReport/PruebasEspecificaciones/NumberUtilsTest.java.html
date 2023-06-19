@@ -1,4 +1,4 @@
-package PruebasEspecificaciones;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>NumberUtilsTest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">StringUtilsTest Coverage Results</a> &gt; <a href="index.source.html" class="el_package">PruebasEspecificaciones</a> &gt; <span class="el_source">NumberUtilsTest.java</span></div><h1>NumberUtilsTest.java</h1><pre class="source lang-java linenums">package PruebasEspecificaciones;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -12,16 +12,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.params.provider.Arguments.of;
 
-public class NumberUtilsTest {
-
+<span class="nc" id="L15">public class NumberUtilsTest {</span>
+/*
     @ParameterizedTest
-    @MethodSource("testCases")
-    void shouldReturnCorrectResult(List<Integer> left, List<Integer> right, List<Integer> expected) {
+    @MethodSource(&quot;testCases&quot;)
+    void shouldReturnCorrectResult(List&lt;Integer&gt; left, List&lt;Integer&gt; right, List&lt;Integer&gt; expected) {
         assertThat(new NumberUtils().add(left, right))
                 .isEqualTo(expected);
     }
 
-    static Stream<Arguments> testCases() {
+ */
+/*
+    static Stream&lt;Arguments&gt; testCases() {
 
         /*
          * Casos de prueba:
@@ -58,7 +60,7 @@ public class NumberUtilsTest {
          *
          * limite:
          * T21 =  aumento de  un nuevo dígito más significativo, por uno (e.g., 99+1).
-         */
+
 
         return Stream.of(
                 // null y vacíos deben devolver null
@@ -109,25 +111,23 @@ public class NumberUtilsTest {
     }
 
     @ParameterizedTest
-    @MethodSource("digitsOutOfRange")
-    void shouldThrowExceptionWhenDigitsAreOutOfRange(List<Integer> left, List<Integer> right) {
-        assertThatThrownBy(() -> new NumberUtils().add(left, right))
+    @MethodSource(&quot;digitsOutOfRange&quot;)
+    void shouldThrowExceptionWhenDigitsAreOutOfRange(List&lt;Integer&gt; left, List&lt;Integer&gt; right) {
+        assertThatThrownBy(() -&gt; new NumberUtils().add(left, right))
                 .isInstanceOf(IllegalArgumentException.class);
 
     }
 
-    static Stream<Arguments> digitsOutOfRange() {
+    static Stream&lt;Arguments&gt; digitsOutOfRange() {
         return Stream.of(
-                of(numbers(1,-1,1), numbers(1)),
-                of(numbers(1), numbers(1,-1,1)),
-                of(numbers(1,11,1), numbers(1)),
-                of(numbers(1), numbers(1,11,1))
+               // completa
         );
     }
 
     // devuelve una lista mutable de enteros
-    private static List<Integer> numbers(int... nums) {
-       // no supe que hacer aqui
+    private static List&lt;Integer&gt; numbers(int... nums) {
+       // completa
     }
-
+ */
 }
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

@@ -8,7 +8,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class NumberUtilsNonSystematicTest {
-/*
+
     @Test
     void t1() {
         assertThat(new NumberUtils().add(numbers(1), numbers(1)))
@@ -30,5 +30,4 @@ public class NumberUtilsNonSystematicTest {
             list.add(n);
         return list;
     }
-*/
 }

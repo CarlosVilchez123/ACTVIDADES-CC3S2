@@ -1,52 +1,83 @@
 package PruebasEspecificaciones;
 
 import org.junit.jupiter.api.Test;
-import static PruebaEspecificaciones.StringUtils.substringsBetween;
+import static PruebasEspecificaciones.StringUtils.substringsBetween;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class StringUtilsTest {
 
-    public StringUtils EMPY_STRING_ARRAY = new StringUtils();
-    @Test
-    void strIsNullOrEmpty() {
-        String str="";
-        String open= "a";
-        String close = "a";
-        assertThat(EMPY_STRING_ARRAY.substringsBetween(str,open,close)).isEqualTo(null);
+    @Test void strIsNullOrEmpty() {
+        assertThat(substringsBetween(null, "a", "b"))
+                .isEqualTo(null);
+        assertThat(substringsBetween("", "a", "b"))
+                .isEqualTo(new String[]{});
     }
 
     @Test
     void openIsNullOrEmpty() {
-        // Completa
+        assertThat(substringsBetween("abc", null, "b"))
+                .isEqualTo(null);
+        assertThat(substringsBetween("abc", "a", ""))
+                .isEqualTo(null);
     }
 
     @Test
     void closeIsNullOrEmpty() {
-        // Completa
+        assertThat(substringsBetween("abc", "a", null))
+                .isEqualTo(null);
+        assertThat(substringsBetween("abc", "a", ""))
+                .isEqualTo(null);
     }
 
     @Test
     void strOfLength1() {
-        // Completa
+        assertThat(substringsBetween("a", "a", "b")).isEqualTo(null);
+        assertThat(substringsBetween("a", "b", "a")).isEqualTo(null);
+        assertThat(substringsBetween("a", "b", "b")).isEqualTo(null);
+        assertThat(substringsBetween("a", "a", "a")).isEqualTo(null);
     }
 
     @Test
     void openAndCloseOfLength1() {
-        // Completa
+        assertThat(substringsBetween("abc", "x", "y")).isEqualTo(null);
+        assertThat(substringsBetween("abc", "a", "y")).isEqualTo(null);
+        assertThat(substringsBetween("abc", "x", "c")).isEqualTo(null);
+        assertThat(substringsBetween("abc", "a", "c")).isEqualTo(new String[] { "b"});
     }
 
     @Test
     void openAndCloseTagsOfDifferentSizes() {
-       // Completa
+        assertThat(substringsBetween("aabcc", "xx", "yy")).isEqualTo(null);
+        assertThat(substringsBetween("aabcc", "aa", "yy")).isEqualTo(null);
+        assertThat(substringsBetween("aabcc", "xx", "cc")).isEqualTo(null);
+        assertThat(substringsBetween("aabbcc", "aa", "cc"))
+                .isEqualTo(new String[] {"bb"});
+        assertThat(substringsBetween("aabbccaaeecc", "aa", "cc"))
+                .isEqualTo(new String[] {"bb", "ee"});
     }
 
     @Test
     void noSubstringBetweenOpenAndCloseTags() {
-        // Completa
+        assertThat(substringsBetween("aabb", "aa", "bb"))
+                .isEqualTo(new String[] { ""});
     }
 
     @Test
     void closeTagAppearingMultipleTimes() {
         // Completa
+    }
+
+    // CASOS NUEVOS BASADOS PASO 7
+
+    @Test
+    void casoExtra(){
+        assertThat(substringsBetween("abcabyt byrc", "a", "c"))
+                .isEqualTo(new String[ ] {"b", "byt byr"});
+    }
+
+    @Test
+    void casoExtra2(){
+        assertThat(substringsBetween("a abb ddc ca abbcc", "a a", "c c"))
+                . isEqualTo(new String[ ]{"bb dd"});
     }
 }

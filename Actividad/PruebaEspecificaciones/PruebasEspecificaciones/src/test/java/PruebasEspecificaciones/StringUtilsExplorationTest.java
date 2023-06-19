@@ -11,17 +11,23 @@ public class StringUtilsExplorationTest {
 
     @Test
     void simpleCase() {
-        //completa
+        assertThat(
+                StringUtils.substringsBetween("abcd", "a", "d")
+        ).isEqualTo(new String[] { "bc" });
     }
 
     @Test
     void manySubstrings() {
-        // completa
+        assertThat(
+                StringUtils.substringsBetween("abcdabcdad", "a", "d")
+        ).isEqualTo(new String[] { "bc","bc"});
     }
 
     @Test
     void openAndCloseTagsThatAreLongerThan1Char() {
-       // completa
+        assertThat(
+                StringUtils.substringsBetween("aabcddaabfddaab", "aa", "dd")
+        ).isEqualTo(new String[] { "bc","bf"});
     }
 
 }
