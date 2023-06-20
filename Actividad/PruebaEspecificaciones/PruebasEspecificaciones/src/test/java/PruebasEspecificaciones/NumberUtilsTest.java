@@ -107,7 +107,6 @@ public class NumberUtilsTest {
                 of(numbers(9,9), numbers(1), numbers(1,0,0)) // T21
         );
     }
-
     @ParameterizedTest
     @MethodSource("digitsOutOfRange")
     void shouldThrowExceptionWhenDigitsAreOutOfRange(List<Integer> left, List<Integer> right) {
@@ -127,7 +126,7 @@ public class NumberUtilsTest {
 
     // devuelve una lista mutable de enteros
     private static List<Integer> numbers(int... nums) {
-       // no supe que hacer aqui
+        // no supe que hacer aqui :C
     }
 
 }

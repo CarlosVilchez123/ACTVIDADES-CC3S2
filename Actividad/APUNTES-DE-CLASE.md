@@ -64,3 +64,28 @@ Al probar el sistema, deseas ejercitar todo el sistema en conjunto, incluidas to
 La ventaja obvia de las pruebas del sistema es cuán realistas son las pruebas. Nuestros clientes finales no ejecutarán el método identifyExtremes() de forma aislada. Más bien, visitarán una página web, enviarán un formulario y verán los resultados. Las pruebas del sistema ejercitan el sistema de esa manera precisa. Cuanto más realistas sean las pruebas (es decir, cuando las pruebas realicen acciones similares a las del usuario final), más confianza podremos tener sobre todo el sistema.
 
 
+# PRUEBAS PARAMETRIZADAS
+
+el uso de pruebas parametrizadas crea una separacion entre los datos de prueba y la estructura, lo que simplifica el codigo, elimina la duplicacion
+y garantiza una mayor cobertura.
+
+
+# QUE ES UNA PRUEBA PARAMETRIZADA EN JUNIT?
+
+UN prueba parametrizada es un metodo de prueba en el que los datos utilizados en la prueba
+provienen de parametros en lugar de estar codificados en el propio metodo.
+
+Hay una sintacis especial, en forma de anotaciones, que el permite pasar un conjunto de valores
+el metodo de prueba.
+
+
+Cuando JUnit ejecutara una prueba para cada conjunto de datos pasados al metodo.
+
+La separacion de preocupaciones que vrinda las pruebas parametrizadas trae benficios tales como:
+
+- Codigo de prueba màs simple y legible porque, en lugar de estar codificado, muchos calores dentro de la prueba ahora son parametros bien nombrados.
+- Menos duplicacion de pruebas porque puede tener un solo metodo que de origen a muchas pruebas.
+- Màs cobertura de prueba porque la friccion para agregar un nuevo conjunto de datos es mucho menor que agregar un metodo de prueba completamente nuevo.
+
+NOTA: es necesario importar la dependencia org-junit-jupiter-params
+ 

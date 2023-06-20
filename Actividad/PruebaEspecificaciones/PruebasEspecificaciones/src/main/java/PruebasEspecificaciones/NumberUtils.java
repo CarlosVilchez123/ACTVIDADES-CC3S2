@@ -6,6 +6,7 @@ import java.util.List;
 
 public class NumberUtils {
 
+    //contratos
     /**
      * Este método recibe dos números, 'left' y 'right', ambos representados como una lista de dígitos.
      * Agrega estos números y devuelve el resultado también como una lista de dígitos.
