@@ -1,2 +1,5 @@
-package org.example;public class UserProfiles {
+package org.example;
+
+public interface UserProfiles {
+    String fetchNicknameFor(UserId id);
 }
