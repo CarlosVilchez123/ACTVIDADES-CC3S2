@@ -1,2 +1,5 @@
-package org.example;public class WordRepository {
+package org.example;
+
+public interface WordRepository {
+    String fetchWordByNumber(int wordNumber);
 }
