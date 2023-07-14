@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AirportTest3.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">AirportTest3 Coverage Results</a> &gt; <a href="index.source.html" class="el_package">Fase3</a> &gt; <span class="el_source">AirportTest3.java</span></div><h1>AirportTest3.java</h1><pre class="source lang-java linenums">package Fase3;
+import org.example.Fase3.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+<span class="fc" id="L11">public class AirportTest3 {</span>
+    @DisplayName(&quot;Hay un vuelo economico&quot;)
+    @Nested
+<span class="fc" id="L14">    class EconomyFlightTest {</span>
+
+        private Flight economyFlight;
+        private Passenger carlos;
+
+        private Passenger arturo;
+
+        @BeforeEach
+        void setUp() {
+<span class="fc" id="L23">            economyFlight = new EconomyFlight(&quot;1&quot;);</span>
+<span class="fc" id="L24">            carlos = new Passenger(&quot;carlos&quot;,true); //es vip</span>
+<span class="fc" id="L25">            arturo = new Passenger(&quot;arturo&quot;, false);</span>
+<span class="fc" id="L26">        }</span>
+
+        @Nested
+        @DisplayName(&quot;Cuando tenemos un pasajero regular&quot;)
+<span class="fc" id="L30">        class RegularPassenger {</span>
+
+            @Test
+            @DisplayName(&quot;Luego puede agregarlo y eliminarlo de un vuelo economico&quot;)
+            public void testEconomyFlightRegularPassenger() {
+<span class="fc" id="L35">                assertAll(&quot;Verifica todas las condiciones para un pasajero regular y un vuelo economico&quot;,</span>
+<span class="fc" id="L36">                        () -&gt; assertEquals(&quot;1&quot;, economyFlight.getId()),</span>
+<span class="fc" id="L37">                        () -&gt; assertEquals(true, economyFlight.addPassenger(arturo)),</span>
+<span class="fc" id="L38">                        () -&gt; assertEquals(1, economyFlight.getPassengersList().size()),</span>
+<span class="fc" id="L39">                        () -&gt; assertEquals(&quot;arturo&quot;, economyFlight.getPassengersList().get(0).getName()),</span>
+<span class="fc" id="L40">                        () -&gt; assertEquals(true, economyFlight.removePassenger(arturo)),</span>
+<span class="fc" id="L41">                        () -&gt; assertEquals(0, economyFlight.getPassengersList().size())</span>
+                );
+<span class="fc" id="L43">            }</span>
+        }
+
+        @Nested
+        @DisplayName(&quot;Cuando tenemos un pasajero VIP&quot;)
+<span class="fc" id="L48">        class VipPassenger {</span>
+            @Test
+            @DisplayName(&quot;Luego puedes agregarlo pero no puedes eliminarlo de un vuelo economico&quot;)
+            public void testEconomyFlightVipPassenger() {
+<span class="fc" id="L52">                assertAll(&quot;Verifica todas las condiciones para un pasajero VIP y un vuelo economico&quot;,</span>
+<span class="fc" id="L53">                        () -&gt; assertEquals(&quot;1&quot;, economyFlight.getId()),</span>
+<span class="fc" id="L54">                        () -&gt; assertEquals(true, economyFlight.addPassenger(carlos)),</span>
+<span class="fc" id="L55">                        () -&gt; assertEquals(1, economyFlight.getPassengersList().size()),</span>
+<span class="fc" id="L56">                        () -&gt; assertEquals(&quot;carlos&quot;, economyFlight.getPassengersList().get(0).getName()),</span>
+<span class="fc" id="L57">                        () -&gt; assertEquals(false, economyFlight.removePassenger(carlos)),</span>
+<span class="fc" id="L58">                        () -&gt; assertEquals(1, economyFlight.getPassengersList().size())</span>
+                );
+
+<span class="fc" id="L61">            }</span>
+        }
+    }
+
+    @DisplayName(&quot;Dado que hay un vuelo de negocios&quot;)
+    @Nested
+<span class="fc" id="L67">    class BusinessFlightTest {</span>
+        private Flight businessFlight;
+        private Passenger carlos;
+
+        private Passenger arturo;
+
+        @BeforeEach
+        void setUp() {
+<span class="fc" id="L75">            businessFlight = new BusinessFlight(&quot;2&quot;);</span>
+<span class="fc" id="L76">            carlos = new Passenger(&quot;carlos&quot;,true); //es vip</span>
+<span class="fc" id="L77">            arturo = new Passenger(&quot;arturo&quot;, false);</span>
+<span class="fc" id="L78">        }</span>
+
+        @Nested
+        @DisplayName(&quot;Cuando tenemos un pasajero regular&quot;)
+<span class="fc" id="L82">        class RegularPassenger {</span>
+
+            @Test
+            @DisplayName(&quot;Entonces no puedes agregarlo o eliminarlo de un vuelo de negocios&quot;)
+            public void testBusinessFlightRegularPassenger() {
+<span class="fc" id="L87">                assertAll(&quot;Verifica todas las condiciones para un pasajero regular y un vuelo de negocios&quot;,</span>
+<span class="fc" id="L88">                        () -&gt; assertEquals(false, businessFlight.addPassenger(arturo)),</span>
+<span class="fc" id="L89">                        () -&gt; assertEquals(0, businessFlight.getPassengersList().size()),</span>
+<span class="fc" id="L90">                        () -&gt; assertEquals(false, businessFlight.removePassenger(arturo)),</span>
+<span class="fc" id="L91">                        () -&gt; assertEquals(0, businessFlight.getPassengersList().size())</span>
+                );
+<span class="fc" id="L93">            }</span>
+        }
+
+        @Nested
+        @DisplayName(&quot;Cuando tenemos un pasajero VIP&quot;)
+<span class="fc" id="L98">        class VipPassenger {</span>
+
+            @Test
+            @DisplayName(&quot;Luego puedes agregarlo pero no puede eliminarlo de un vuelo de negocios&quot;)
+            public void testBusinessFlightVipPassenger() {
+<span class="fc" id="L103">                assertAll(&quot;Verifica todas las condiciones para un pasajero VIP y un vuelo de negocios&quot;,</span>
+<span class="fc" id="L104">                        () -&gt; assertEquals(true, businessFlight.addPassenger(carlos)),</span>
+<span class="fc" id="L105">                        () -&gt; assertEquals(1, businessFlight.getPassengersList().size()),</span>
+<span class="fc" id="L106">                        () -&gt; assertEquals(false, businessFlight.removePassenger(carlos)),</span>
+<span class="fc" id="L107">                        () -&gt; assertEquals(1, businessFlight.getPassengersList().size())</span>
+                );
+<span class="fc" id="L109">            }</span>
+        }
+    }
+
+
+    @DisplayName(&quot;Dado un vuelo primeum&quot;)
+    @Nested
+<span class="fc" id="L116">    class PrimeumFlight{</span>
+        private PremiumFlight premiumFlight;
+        private Passenger carlos;
+
+        private Passenger arturo;
+
+        @BeforeEach
+        public void init(){
+<span class="fc" id="L124">            premiumFlight = new PremiumFlight(&quot;3&quot;);</span>
+<span class="fc" id="L125">            carlos = new Passenger(&quot;carlos&quot;,true); //es vip</span>
+<span class="fc" id="L126">            arturo = new Passenger(&quot;arturo&quot;, false);</span>
+
+<span class="fc" id="L128">        }</span>
+        @Nested
+        @DisplayName(&quot;Cuando tenemos un pasajero regular&quot;)
+<span class="fc" id="L131">        class regularPassenger{</span>
+            @Test
+            @DisplayName(&quot;Un pasajero regular no puede registrarse sa un vuelo Primeum&quot;)
+            public void testPreimeumFLightRegularPassenger(){
+<span class="fc" id="L135">                assertAll(&quot;Verfica todas las condiciones para un pasajero Regular&quot;,</span>
+<span class="fc" id="L136">                        ()-&gt; assertEquals(false, premiumFlight.addPassenger(arturo)),</span>
+<span class="fc" id="L137">                        ()-&gt;assertEquals(0, premiumFlight.getPassengersList().size())</span>
+                        );
+<span class="fc" id="L139">            }</span>
+        }
+
+        @Nested
+        @DisplayName(&quot;Cuando tenemos un pasajero Vip&quot;)
+<span class="fc" id="L144">        class vipPassenger{</span>
+            @Test
+            @DisplayName(&quot;Un pasajero Vip puede registrarse sa un vuelo Primeum&quot;)
+            public void testPreimeumFLightRegularPassenger(){
+<span class="fc" id="L148">                assertAll(&quot;Verfica todas las condiciones para un pasajero Regular&quot;,</span>
+<span class="fc" id="L149">                        ()-&gt; assertEquals(true, premiumFlight.addPassenger(carlos)),</span>
+<span class="fc" id="L150">                        ()-&gt;assertEquals(1, premiumFlight.getPassengersList().size()),</span>
+<span class="fc" id="L151">                        ()-&gt;assertEquals(&quot;carlos&quot;, premiumFlight.getPassengersList().get(0).getName()),</span>
+<span class="fc" id="L152">                        ()-&gt;assertEquals(true, premiumFlight.removePassenger(carlos)),</span>
+<span class="fc" id="L153">                        ()-&gt;assertEquals(0, premiumFlight.getPassengersList().size())</span>
+                );
+<span class="fc" id="L155">            }</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

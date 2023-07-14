@@ -6,12 +6,12 @@ public class BusinessFlight extends Flight{
     }
     @Override
     public boolean addPassenger(Passenger passenger){
-        return passengers.add(passenger);
+        if(passenger.isVip())
+            return passengers.add(passenger);
+        return false;
     }
     @Override
     public boolean removePassenger(Passenger passenger){
-        if(!passenger.isVip())
-            return passengers.remove(passenger);
         return false;
     }
 }

@@ -1,17 +1,15 @@
-package org.example.Fase3;
+package org.example.Fase4;
 
-public class PremiumFlight extends Flight{
-
-    private String id;
-    public PremiumFlight(String id){
+public class BusinessFlight extends Flight {
+    public BusinessFlight(String id){
         super(id);
     }
-
     @Override
     public boolean addPassenger(Passenger passenger){
+        if(passenger.isVip())
+            return passengers.add(passenger);
         return false;
     }
-
     @Override
     public boolean removePassenger(Passenger passenger){
         return false;

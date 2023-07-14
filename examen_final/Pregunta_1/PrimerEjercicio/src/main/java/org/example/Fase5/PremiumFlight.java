@@ -1,6 +1,6 @@
-package org.example.Fase3;
+package org.example.Fase5;
 
-public class PremiumFlight extends Flight{
+public class PremiumFlight extends Flight {
 
     private String id;
     public PremiumFlight(String id){
@@ -8,9 +8,7 @@ public class PremiumFlight extends Flight{
     }
 
     @Override
-    public boolean addPassenger(Passenger passenger){
-        return false;
-    }
+    public boolean addPassenger(Passenger passenger){return false;}
 
     @Override
     public boolean removePassenger(Passenger passenger){

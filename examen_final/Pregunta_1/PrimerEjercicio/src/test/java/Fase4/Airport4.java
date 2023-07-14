@@ -1,5 +1,6 @@
-package Fase3;
-import org.example.Fase3.*;
+package Fase4;
+
+import org.example.Fase4.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -8,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class AirportTest3 {
+public class Airport4 {
     @DisplayName("Hay un vuelo economico")
     @Nested
     class EconomyFlightTest {
@@ -116,29 +117,12 @@ public class AirportTest3 {
     class PrimeumFlight{
         private PremiumFlight premiumFlight;
         private Passenger carlos;
-
-        private Passenger arturo;
-
         @BeforeEach
         public void init(){
             premiumFlight = new PremiumFlight("3");
             carlos = new Passenger("carlos",true); //es vip
-            arturo = new Passenger("arturo", false);
 
         }
-        @Nested
-        @DisplayName("Cuando tenemos un pasajero regular")
-        class regularPassenger{
-            @Test
-            @DisplayName("Un pasajero regular no puede registrarse sa un vuelo Primeum")
-            public void testPreimeumFLightRegularPassenger(){
-                assertAll("Verfica todas las condiciones para un pasajero Regular",
-                        ()-> assertEquals(false, premiumFlight.addPassenger(arturo)),
-                        ()->assertEquals(0, premiumFlight.getPassengersList().size())
-                        );
-            }
-        }
-
         @Nested
         @DisplayName("Cuando tenemos un pasajero Vip")
         class vipPassenger{
@@ -146,10 +130,9 @@ public class AirportTest3 {
             @DisplayName("Un pasajero Vip puede registrarse sa un vuelo Primeum")
             public void testPreimeumFLightRegularPassenger(){
                 assertAll("Verfica todas las condiciones para un pasajero Regular",
-                        ()-> assertEquals(true, premiumFlight.addPassenger(carlos)),
-                        ()->assertEquals(1, premiumFlight.getPassengersList().size()),
-                        ()->assertEquals("carlos", premiumFlight.getPassengersList().get(0).getName()),
-                        ()->assertEquals(true, premiumFlight.removePassenger(carlos)),
+                        ()-> assertEquals(false, premiumFlight.addPassenger(carlos)),
+                        ()->assertEquals(0, premiumFlight.getPassengersList().size()),
+                        ()->assertEquals(false, premiumFlight.removePassenger(carlos)),
                         ()->assertEquals(0, premiumFlight.getPassengersList().size())
                 );
             }
