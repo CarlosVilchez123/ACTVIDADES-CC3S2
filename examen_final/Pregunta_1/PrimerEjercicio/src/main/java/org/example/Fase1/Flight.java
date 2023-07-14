@@ -1,4 +1,4 @@
-package org.example.Antes;
+package org.example.Fase1;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,11 +8,13 @@ public class Flight {
     /*
     Agregamos el atributo passangers
      */
+    private String id;
     private List<Passenger> passengers = new ArrayList<>();
     private String flightType;
 
-    public Flight(String flightType) {
-
+    //contructor
+    public Flight(String id,String flightType) {
+        this.id = id;
         this.flightType = flightType;
     }
 
@@ -23,6 +25,7 @@ public class Flight {
      *                  el pasajero es un pasajero ecnomico este no podra registrarse en vuelos de negocios.
      * @return
      */
+
     public boolean addPassenger(Passenger passenger) {
         switch (flightType) {
             case "Economico":
@@ -48,6 +51,7 @@ public class Flight {
      * @return retorna un valor true si es que el pasajero fue removido de forma exitosa
      *          de lo contrario retornara un false.
      */
+
     public boolean removePassenger(Passenger passenger) {
         switch (flightType) {
             case "Economico":
@@ -66,6 +70,12 @@ public class Flight {
      * Este metodo retorna la lista de pasajeros
      * @return
      */
+
+    //Getters
+
+    public String getId(){
+        return id;
+    }
     public List<Passenger> getPassengersList() {
         return Collections.unmodifiableList(passengers);
     }
