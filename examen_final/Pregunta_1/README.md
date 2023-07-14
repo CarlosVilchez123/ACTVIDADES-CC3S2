@@ -290,7 +290,7 @@ nota: En este caso se nos pide que cualquier tipo de pasajero sea removido inher
 
 tipo de pasajero que sea. 
 
-Se hicieron los cambios peritentenes al metodo removePassenger de cada subclase del codigo de producción.
+Se hicieron los cambios pertinentes al metodo removePassenger de cada subclase del codigo de producción.
 
 ---
 
