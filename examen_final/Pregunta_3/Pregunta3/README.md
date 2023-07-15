@@ -64,10 +64,10 @@ public class MockHttpURLConnection extends HttpURLConnection {
 }
 ```
 
-Asi como se presenta el codigo la prueba no pasara; esto puede ser debido a una mal uso de la clase URLConnection, por falta de practica manejando esta libreria resulta algo engorroso trabajar con esta clase.
+Asi como se presenta el codigo de la prueba no pasara; esto puede ser debido a una mal uso de la clase URLConnection, por falta de practica manejando esta libreria resulta algo engorroso trabajar con esta clase.
 
-Test
 
+```java
 package org.example;
 
 import java.io.IOException;
